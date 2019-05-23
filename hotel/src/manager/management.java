@@ -54,10 +54,9 @@ import dataBaseOperation.Operation;
 //import java.sql.Date;
 
 public class management extends JFrame {
-
 	JPanel p2 = new JPanel();
 	JLabel label = new JLabel();
-	JLabel label2 = new JLabel();
+	JLabel label2 = new JLabel();//我是陈泰劼，我做出了修改
 
 	public int Countdays = 0;// 居住天数
 	JButton btnBook = new JButton("预定");
