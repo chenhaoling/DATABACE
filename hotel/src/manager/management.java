@@ -53,10 +53,10 @@ import dataBaseOperation.Operation;
 
 //import java.sql.Date;
 
-public class management extends JFrame {
+public class management extends JFrame {//窗口类
 
-	JPanel p2 = new JPanel();
-	JLabel label = new JLabel();
+	JPanel p2 = new JPanel();//面板类
+	JLabel label = new JLabel();//图像 文本等
 	JLabel label2 = new JLabel();
 
 	public int Countdays = 0;// 居住天数
