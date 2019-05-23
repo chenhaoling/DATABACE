@@ -108,9 +108,9 @@ public class management extends JFrame {
 				f.setLayout(new GridLayout(7, 1));
 
 				final JTextField txtSingleOrDouble = new JTextField("");
-				final JTextField txtName = new JTextField("姓名");
-				final JTextField txtPhone = new JTextField("电话");
-				final JTextField txtIDNumber = new JTextField("身份证号码");
+				final JTextField txtName = new JTextField("");
+				final JTextField txtPhone = new JTextField("");
+				final JTextField txtID = new JTextField("");
 				final JRadioButton singleRoom;
 				final JRadioButton doubleRoom;
 				singleRoom = new JRadioButton("singleRoom");
@@ -123,6 +123,9 @@ public class management extends JFrame {
 				final JTextField txtEndDate = new JTextField("入住结束日期");
 				final JButton btnChooseDate = new JButton("选择开始日期");
 				final JButton btnChooseDate2 = new JButton("选择结束日期");
+				final JLabel labName=new JLabel("姓名",SwingConstants.CENTER);
+				final JLabel labPhone=new JLabel("电话",SwingConstants.CENTER);
+				final JLabel labID=new JLabel("身份证号码",SwingConstants.CENTER);
 				JButton btnOK = new JButton();
 
 				btnOK.setText("确定");
@@ -169,6 +172,10 @@ public class management extends JFrame {
 
 				JPanel p1 = new JPanel(new GridLayout(1, 2));
 				JPanel p2 = new JPanel(new GridLayout(1, 2));
+				JPanel nameRow=new JPanel(new GridLayout(1,2));
+				JPanel phoneRow=new JPanel(new GridLayout(1,2));
+				JPanel IDRow=new JPanel(new GridLayout(1,2));
+				
 				add(p1);
 				p1.add(btnChooseDate);
 				p1.add(txtStartDate);
@@ -176,10 +183,19 @@ public class management extends JFrame {
 				add(p2);
 				p2.add(btnChooseDate2);
 				p2.add(txtEndDate);
-
-				f.add(txtName);
-				f.add(txtPhone);
-				f.add(txtIDNumber);
+				
+				add(nameRow);
+				add(phoneRow);
+				add(IDRow);
+				nameRow.add(labName);
+				nameRow.add(txtName);
+				phoneRow.add(labPhone);
+				phoneRow.add(txtPhone);
+				IDRow.add(labID);
+				IDRow.add(txtID);
+				f.add(nameRow);
+				f.add(phoneRow);
+				f.add(IDRow);
 
 				JPanel p3 = new JPanel(new GridLayout(1, 2));
 
