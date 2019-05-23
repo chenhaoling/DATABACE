@@ -221,7 +221,7 @@ public class management extends JFrame {
 						//button.setSize(100, 100);
 						cp.add(button);
 						frame.setContentPane(cp);
-						frame.setSize(800, 200);
+						frame.setSize(200, 200);
 						frame.setVisible(true);
 						//btnChooseDate.setText("Nihao");
 
