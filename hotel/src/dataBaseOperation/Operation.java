@@ -21,11 +21,11 @@ import javax.swing.JOptionPane;
 
 public class Operation {
 	static Connection conn;
-	// 驱动
+	// 椹卞姩
 	static String driver = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/hotel?useSSL=false&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8";
-	static String user = "chentaijie";
-	static String password = "chen123";
+	static String user = "test";
+	static String password = "fan0525R";
 
 	public static void Connect() {
 
@@ -49,7 +49,7 @@ public class Operation {
 		while (rs.next()) {
 			isBooked = rs.getInt("isBooked");
 			// isBooked = new Integer(isBooked.getBytes("UTF-8"), "UTF-8");
-			// System.out.println("����״̬�� " + isBooked);
+			// System.out.println("锟斤拷锟斤拷状态锟斤拷 " + isBooked);
 		}
 		if (0 == isBooked)
 
@@ -115,14 +115,14 @@ public class Operation {
 		// + SingleOrDouble + "'" + ")");
 		if (SingleOrDouble.equals("singleRoom")) {
 
-			sql +=  (100*Countdays)+")";//单人房100元一天
+			sql +=  (100*Countdays)+")";//鍗曚汉鎴�100鍏冧竴澶�
 		}
 		else 
-			sql +=  (200*Countdays)+")";//双人房200元每天
+			sql +=  (200*Countdays)+")";//鍙屼汉鎴�200鍏冩瘡澶�
 		statement.execute(sql);
 
 		String sql2 = "update  customer set sum=pub+bar+coffee+taxi+fareOfHousing";
-		statement.execute(sql2);// 计算总帐目
+		statement.execute(sql2);// 璁＄畻鎬诲笎鐩�
 	}
 
 	public static void insertChangeRoomInfor(String name, String roomNumber)
@@ -145,7 +145,7 @@ public class Operation {
 		statement.execute(sql);
 	}
 
-	// 登记时选择房间
+	// 鐧昏鏃堕�夋嫨鎴块棿
 	public static void updateWhenRegister(String name, String roomNumber)
 			throws SQLException {
 		Statement statement = conn.createStatement();
@@ -185,12 +185,12 @@ public class Operation {
 	}
 
 	public static void changeRoom(String ID1, String ID2) throws SQLException,
-			UnsupportedEncodingException { // 用于更换房间的函数
+			UnsupportedEncodingException { // 鐢ㄤ簬鏇存崲鎴块棿鐨勫嚱鏁�
 
 		Statement statement = conn.createStatement();
 		String sql1 = "UPDATE roominfor SET isBooked = 0 WHERE roomNumber = "
 				+ ID1;
-		statement.execute(sql1); // sql1是把原房间的isBooked属性改为0
+		statement.execute(sql1); // sql1鏄妸鍘熸埧闂寸殑isBooked灞炴�ф敼涓�0
 		String sql2 = "SELECT master FROM roominfor WHERE roomNumber = " + ID1;
 		ResultSet rs = statement.executeQuery(sql2);
 		String name = null;
@@ -200,25 +200,25 @@ public class Operation {
 			name = new String(name.getBytes("UTF-8"), "UTF-8");
 		}
 
-		System.out.println(name); // sql2用于获取原房间的客户名称
+		System.out.println(name); // sql2鐢ㄤ簬鑾峰彇鍘熸埧闂寸殑瀹㈡埛鍚嶇О
 
 		String sql11 = "UPDATE customer SET roomNumber =  " + ID2
 				+ "   WHERE roomNumber = " + ID1;
-		statement.execute(sql11); // sql6用于把客户表的房间号改成变化后的
+		statement.execute(sql11); // sql6鐢ㄤ簬鎶婂鎴疯〃鐨勬埧闂村彿鏀规垚鍙樺寲鍚庣殑
 
 		String sql3 = "UPDATE roominfor" + "" + " SET master = '' "
 				+ " WHERE roomNumber = " + ID1;
-		statement.execute(sql3); // sql3用于删除原房间的客户名
+		statement.execute(sql3); // sql3鐢ㄤ簬鍒犻櫎鍘熸埧闂寸殑瀹㈡埛鍚�
 		String sql4 = "UPDATE roominfor SET master = " + "'" + name + "'"
 				+ " WHERE roomNumber = " + ID2;
-		statement.execute(sql4); // sql4用于把客户姓名填入新房间号的数据库记录中
+		statement.execute(sql4); // sql4鐢ㄤ簬鎶婂鎴峰鍚嶅～鍏ユ柊鎴块棿鍙风殑鏁版嵁搴撹褰曚腑
 		String sql5 = "UPDATE roominfor SET isBooked = 1                WHERE roomNumber = "
 				+ ID2;
 		statement.execute(sql5);
 
 	}
 
-	// 其他服务
+	// 鍏朵粬鏈嶅姟
 	public static void service(boolean a, boolean b, boolean c, boolean d,
 			String roomNumber) throws SQLException {
 		if (a == true) {
@@ -247,7 +247,7 @@ public class Operation {
 		}
 		Statement statement = conn.createStatement();
 		String sql2 = "UPDATE  customer SET sum=pub+bar+taxi+coffee+fareOfHousing WHERE roomNumber = "+roomNumber;
-		statement.execute(sql2);// 计算总帐目
+		statement.execute(sql2);// 璁＄畻鎬诲笎鐩�
 
 	}
 
@@ -259,13 +259,13 @@ public class Operation {
 				+ roomNumber;
 		statement.execute(sql);
 		statement.execute(sql2);
-		//删除customer个人记录
+		//鍒犻櫎customer涓汉璁板綍
 		String sql3 = "DELETE from customer  WHERE roomNumber = "
 				+ roomNumber;
 		statement.execute(sql3);
 	}
 
-	// 根据name查询消费记录
+	// 鏍规嵁name鏌ヨ娑堣垂璁板綍
 	public static Vector consumption(String name) throws SQLException,
 			UnsupportedEncodingException {
 		Statement statement = conn.createStatement();
@@ -294,7 +294,7 @@ public class Operation {
 		v.add(String.valueOf(fareOfHousing));
 		v.add(String.valueOf(sum));
 		System.out.println(String.valueOf(pub));
-		// return String.valueOf(pub);//数字转换为字符串
+		// return String.valueOf(pub);//鏁板瓧杞崲涓哄瓧绗︿覆
 		return v;
 	}
 }
