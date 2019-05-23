@@ -20,7 +20,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Operation {
-	static Connection conn;
+	static Connection conn;//曹
 	// 连接到mysql
 	static String driver = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://209.222.30.78:3306/hotel?useSSL=false&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8";
