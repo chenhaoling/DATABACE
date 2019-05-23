@@ -219,12 +219,12 @@ public class management extends JFrame {
 						JFrame frame = new JFrame("选择开始日期");
 						JPanel cp = new JPanel();
 						DateChooserJButton button = new DateChooserJButton();
-						button.setSize(100, 100);
+						//button.setSize(100, 100);
 						cp.add(button);
 						frame.setContentPane(cp);
-						frame.setSize(200, 200);
+						frame.setSize(800, 200);
 						frame.setVisible(true);
-						// btnChooseDate.setText("Nihao");
+						//btnChooseDate.setText("Nihao");
 
 						/*
 						 * 当前窗口为这个窗口就会得到焦点，弹出其他页面就会失去焦点 我在这里给时间文本框赋值
