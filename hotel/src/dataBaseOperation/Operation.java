@@ -1,5 +1,5 @@
 package dataBaseOperation;
-
+//df
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 //import java.sql.Date;//
@@ -20,22 +20,21 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Operation {
-	static Connection conn;
-	// 椹卞姩
+	static Connection conn;//�?
+	// 连接到mysql
 	static String driver = "com.mysql.cj.jdbc.Driver";
-	static String url = "jdbc:mysql://localhost:3306/hotel?useSSL=false&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8";
-	static String user = "test";
-	static String password = "fan0525R";
+	static String url = "jdbc:mysql://209.222.30.78:3306/hotel?useSSL=false&serverTimezone=GMT&useUnicode=true&characterEncoding=utf8";
+	static String user = "Bat";
+	static String password = "2019!Cao";
 
 	public static void Connect() {
-
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			if (!conn.isClosed())
 				System.out.println("Succeeded connecting to the Database!");
 		} catch (Exception e) {
-			System.out.println("*************************motherfucker");
+			
 			e.printStackTrace();
 		}
 	}
@@ -115,10 +114,10 @@ public class Operation {
 		// + SingleOrDouble + "'" + ")");
 		if (SingleOrDouble.equals("singleRoom")) {
 
-			sql +=  (100*Countdays)+")";//鍗曚汉鎴�100鍏冧竴澶�
+			sql +=  (100*Countdays)+")";//单人�? 100一�?
 		}
 		else 
-			sql +=  (200*Countdays)+")";//鍙屼汉鎴�200鍏冩瘡澶�
+			sql +=  (200*Countdays)+")";//双人�? 200一�?
 		statement.execute(sql);
 
 		String sql2 = "update  customer set sum=pub+bar+coffee+taxi+fareOfHousing";
@@ -145,7 +144,7 @@ public class Operation {
 		statement.execute(sql);
 	}
 
-	// 鐧昏鏃堕�夋嫨鎴块棿
+	// 鐧昏鏃堕�夋嫨鎴块�?
 	public static void updateWhenRegister(String name, String roomNumber)
 			throws SQLException {
 		Statement statement = conn.createStatement();
@@ -185,7 +184,7 @@ public class Operation {
 	}
 
 	public static void changeRoom(String ID1, String ID2) throws SQLException,
-			UnsupportedEncodingException { // 鐢ㄤ簬鏇存崲鎴块棿鐨勫嚱鏁�
+			UnsupportedEncodingException { // 鐀��簬鏇存崲鎴块棿鐨勫嚱鏁�
 
 		Statement statement = conn.createStatement();
 		String sql1 = "UPDATE roominfor SET isBooked = 0 WHERE roomNumber = "
@@ -200,18 +199,18 @@ public class Operation {
 			name = new String(name.getBytes("UTF-8"), "UTF-8");
 		}
 
-		System.out.println(name); // sql2鐢ㄤ簬鑾峰彇鍘熸埧闂寸殑瀹㈡埛鍚嶇О
+		System.out.println(name); // sql2鐀��簬鑾峰彇鍘熸埧闂寸殑瀹㈡埛鍚嶇�?
 
 		String sql11 = "UPDATE customer SET roomNumber =  " + ID2
 				+ "   WHERE roomNumber = " + ID1;
-		statement.execute(sql11); // sql6鐢ㄤ簬鎶婂鎴疯〃鐨勬埧闂村彿鏀规垚鍙樺寲鍚庣殑
+		statement.execute(sql11); // sql6鐀��簬鎶婂鎴疯〃鐨勬埧闂村彿鏀规垚鍙樺寲鍚庣殑
 
 		String sql3 = "UPDATE roominfor" + "" + " SET master = '' "
 				+ " WHERE roomNumber = " + ID1;
-		statement.execute(sql3); // sql3鐢ㄤ簬鍒犻櫎鍘熸埧闂寸殑瀹㈡埛鍚�
+		statement.execute(sql3); // sql3鐀��簬鍒犻櫎鍘熸埧闂寸殑瀹㈡埛鍚�?
 		String sql4 = "UPDATE roominfor SET master = " + "'" + name + "'"
 				+ " WHERE roomNumber = " + ID2;
-		statement.execute(sql4); // sql4鐢ㄤ簬鎶婂鎴峰鍚嶅～鍏ユ柊鎴块棿鍙风殑鏁版嵁搴撹褰曚腑
+		statement.execute(sql4); // sql4鐀��簬鎶婂鎴峰鍚嶅～鍏ユ柊鎴块棿鍙风殑鏁版嵁搴撹褰曚腑
 		String sql5 = "UPDATE roominfor SET isBooked = 1                WHERE roomNumber = "
 				+ ID2;
 		statement.execute(sql5);
@@ -265,7 +264,7 @@ public class Operation {
 		statement.execute(sql3);
 	}
 
-	// 鏍规嵁name鏌ヨ娑堣垂璁板綍
+	// 鏍规嵁name鏌ヨ娑堣垂璁板�?
 	public static Vector consumption(String name) throws SQLException,
 			UnsupportedEncodingException {
 		Statement statement = conn.createStatement();

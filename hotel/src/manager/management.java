@@ -1,9 +1,11 @@
 package manager;
 
 import javax.swing.JRadioButton;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -37,6 +39,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerNumberModel;
@@ -53,12 +56,11 @@ import dataBaseOperation.Operation;
 
 //import java.sql.Date;
 
-public class management extends JFrame {//窗口类
-
-	JPanel p2 = new JPanel();//面板类
-	JLabel label = new JLabel();//图像 文本等
-	JLabel label2 = new JLabel();
-
+public class management extends JFrame {
+	JPanel p2 = new JPanel();
+	JLabel label = new JLabel();
+	JLabel label2 = new JLabel();//我是陈泰劼，我做出了修改
+	//曹续生在陈泰劼电脑上于 524 18点做出了修改
 	public int Countdays = 0;// 居住天数
 	JButton btnBook = new JButton("预定");
 	JButton btnRegister = new JButton("登记");
@@ -108,9 +110,9 @@ public class management extends JFrame {//窗口类
 				f.setLayout(new GridLayout(7, 1));
 
 				final JTextField txtSingleOrDouble = new JTextField("");
-				final JTextField txtName = new JTextField("姓名");
-				final JTextField txtPhone = new JTextField("电话");
-				final JTextField txtIDNumber = new JTextField("身份证号码");
+				final JTextField txtName = new JTextField("");
+				final JTextField txtPhone = new JTextField("");
+				final JTextField txtID = new JTextField("");
 				final JRadioButton singleRoom;
 				final JRadioButton doubleRoom;
 				singleRoom = new JRadioButton("singleRoom");
@@ -123,6 +125,9 @@ public class management extends JFrame {//窗口类
 				final JTextField txtEndDate = new JTextField("入住结束日期");
 				final JButton btnChooseDate = new JButton("选择开始日期");
 				final JButton btnChooseDate2 = new JButton("选择结束日期");
+				final JLabel labName=new JLabel("姓名",SwingConstants.CENTER);
+				final JLabel labPhone=new JLabel("电话",SwingConstants.CENTER);
+				final JLabel labID=new JLabel("身份证号码",SwingConstants.CENTER);
 				JButton btnOK = new JButton();
 
 				btnOK.setText("确定");
@@ -169,6 +174,10 @@ public class management extends JFrame {//窗口类
 
 				JPanel p1 = new JPanel(new GridLayout(1, 2));
 				JPanel p2 = new JPanel(new GridLayout(1, 2));
+				JPanel nameRow=new JPanel(new GridLayout(1,2));
+				JPanel phoneRow=new JPanel(new GridLayout(1,2));
+				JPanel IDRow=new JPanel(new GridLayout(1,2));
+				
 				add(p1);
 				p1.add(btnChooseDate);
 				p1.add(txtStartDate);
@@ -176,10 +185,19 @@ public class management extends JFrame {//窗口类
 				add(p2);
 				p2.add(btnChooseDate2);
 				p2.add(txtEndDate);
-
-				f.add(txtName);
-				f.add(txtPhone);
-				f.add(txtIDNumber);
+				
+				add(nameRow);
+				add(phoneRow);
+				add(IDRow);
+				nameRow.add(labName);
+				nameRow.add(txtName);
+				phoneRow.add(labPhone);
+				phoneRow.add(txtPhone);
+				IDRow.add(labID);
+				IDRow.add(txtID);
+				f.add(nameRow);
+				f.add(phoneRow);
+				f.add(IDRow);
 
 				JPanel p3 = new JPanel(new GridLayout(1, 2));
 
@@ -193,7 +211,7 @@ public class management extends JFrame {//窗口类
 				p4.add(btnOK);
 				f.add(p4);
 
-				f.setSize(250, 230);
+				f.setSize(800, 800);
 				f.setVisible(true);
 
 				// 选择开始日期
@@ -203,12 +221,12 @@ public class management extends JFrame {//窗口类
 						JFrame frame = new JFrame("选择开始日期");
 						JPanel cp = new JPanel();
 						DateChooserJButton button = new DateChooserJButton();
-						button.setSize(100, 100);
+						//button.setSize(100, 100);
 						cp.add(button);
 						frame.setContentPane(cp);
 						frame.setSize(200, 200);
 						frame.setVisible(true);
-						// btnChooseDate.setText("Nihao");
+						//btnChooseDate.setText("Nihao");
 
 						/*
 						 * 当前窗口为这个窗口就会得到焦点，弹出其他页面就会失去焦点 我在这里给时间文本框赋值
@@ -588,19 +606,23 @@ public class management extends JFrame {//窗口类
 		btnChangeRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = new JFrame();
-				f.setLayout(new GridLayout(1, 2));
-				final JTextField oldNumber = new JTextField("已登记房号");
-				final JTextField newNumber = new JTextField("更改房号");
-				JPanel p1 = new JPanel(new GridLayout(2, 1));
-				p1.add(oldNumber);
-				p1.add(newNumber);
-				f.add(p1);
-				JPanel p2 = new JPanel();
+				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Container panel = f.getContentPane();
+				panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+				JButton a = new JButton("已登记房号");
+				JButton c = new JButton("更改房间号");
 				JButton b = new JButton("确认更换");
-				p2.add(b);
-				f.add(p2);
+				final JTextArea oldNumber = new JTextArea(200,50);
+				final JTextArea newNumber = new JTextArea(200,50);
+				//final JTextField oldNumber = new JTextField("");
+				//final JTextField newNumber = new JTextField("");
+				panel.add(a);
+				panel.add(oldNumber);
+				panel.add(c);
+				panel.add(newNumber);
+				panel.add(b);
 				f.setVisible(true);
-				f.setSize(200, 100);
+				f.setSize(800, 400);
 				b.addActionListener(new ActionListener() { // 点击确认更换按钮
 					public void actionPerformed(ActionEvent e) {
 						final String ID1 = oldNumber.getText().toString();
