@@ -59,7 +59,7 @@ public class management extends JFrame {
 	JPanel p2 = new JPanel();
 	JLabel label = new JLabel();
 	JLabel label2 = new JLabel();//我是陈泰劼，我做出了修改
-
+	//曹续生在陈泰劼电脑上于 524 18点做出了修改
 	public int Countdays = 0;// 居住天数
 	JButton btnBook = new JButton("预定");
 	JButton btnRegister = new JButton("登记");
