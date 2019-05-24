@@ -39,6 +39,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerNumberModel;
@@ -611,15 +612,17 @@ public class management extends JFrame {
 				JButton a = new JButton("已登记房号");
 				JButton c = new JButton("更改房间号");
 				JButton b = new JButton("确认更换");
-				final JTextField oldNumber = new JTextField("");
-				final JTextField newNumber = new JTextField("");
+				final JTextArea oldNumber = new JTextArea(200,50);
+				final JTextArea newNumber = new JTextArea(200,50);
+				//final JTextField oldNumber = new JTextField("");
+				//final JTextField newNumber = new JTextField("");
 				panel.add(a);
 				panel.add(oldNumber);
 				panel.add(c);
 				panel.add(newNumber);
 				panel.add(b);
 				f.setVisible(true);
-				f.setSize(200, 400);
+				f.setSize(800, 400);
 				b.addActionListener(new ActionListener() { // 点击确认更换按钮
 					public void actionPerformed(ActionEvent e) {
 						final String ID1 = oldNumber.getText().toString();
