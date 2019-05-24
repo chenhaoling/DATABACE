@@ -1,9 +1,11 @@
 package manager;
 
 import javax.swing.JRadioButton;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -208,7 +210,7 @@ public class management extends JFrame {
 				p4.add(btnOK);
 				f.add(p4);
 
-				f.setSize(250, 230);
+				f.setSize(800, 800);
 				f.setVisible(true);
 
 				// 选择开始日期
@@ -603,19 +605,21 @@ public class management extends JFrame {
 		btnChangeRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = new JFrame();
-				f.setLayout(new GridLayout(1, 2));
-				final JTextField oldNumber = new JTextField("已登记房号");
-				final JTextField newNumber = new JTextField("更改房号");
-				JPanel p1 = new JPanel(new GridLayout(2, 1));
-				p1.add(oldNumber);
-				p1.add(newNumber);
-				f.add(p1);
-				JPanel p2 = new JPanel();
+				f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Container panel = f.getContentPane();
+				panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+				JButton a = new JButton("已登记房号");
+				JButton c = new JButton("更改房间号");
 				JButton b = new JButton("确认更换");
-				p2.add(b);
-				f.add(p2);
+				final JTextField oldNumber = new JTextField("");
+				final JTextField newNumber = new JTextField("");
+				panel.add(a);
+				panel.add(oldNumber);
+				panel.add(c);
+				panel.add(newNumber);
+				panel.add(b);
 				f.setVisible(true);
-				f.setSize(200, 100);
+				f.setSize(200, 400);
 				b.addActionListener(new ActionListener() { // 点击确认更换按钮
 					public void actionPerformed(ActionEvent e) {
 						final String ID1 = oldNumber.getText().toString();
